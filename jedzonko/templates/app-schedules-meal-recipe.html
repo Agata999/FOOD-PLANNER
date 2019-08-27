@@ -1,0 +1,118 @@
+{% extends "__base__.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+<div class="dashboard-content border-dashed p-3 m-4 view-height">
+     <form action="" method="post">
+        <div class="row border-bottom border-3 p-1 m-1">
+
+            <div class="col noPadding">
+                <h3 class="color-header text-uppercase">DODAJ PRZEPIS DO PLANU:  {{ new_plan.name }}</h3>
+            </div>
+               <div class="col d-flex justify-content-end mb-2 noPadding">
+                    <button type="submit" name='remove_id' value=1 class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Zakoncz edycje</button>
+            </div>
+               <div class="col d-flex justify-content-end mb-2 noPadding">
+                    <button type="submit" name='show_plan' value=1 class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Pokaz caly plan</button>
+            </div>
+            <div class="col d-flex justify-content-end mb-2 noPadding">
+                <button type="submit" class="btn btn-success rounded-0 pt-0 pb-0 pr-4 pl-4">Zapisz</button>
+            </div>
+
+
+        </div>
+            <p name="plan_id" hidden>{{ new_plan.id }}</p>
+        <div class="schedules-content">
+            <div hidden class="form-group row">
+                <label for="choosePlan"
+                       class="col-sm-2 label-size col-form-label">
+                    Wybierz plan
+                </label>
+                <div class="col-sm-3">
+                    <select  class="form-control" name="plan_id" id="choosePlan">
+                        <option value="{{ new_plan.id }}">{{ new_plan.id }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="name" class="col-sm-2 label-size col-form-label">
+                    Nazwa posiłku
+                </label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="meal_name_f" id="meal_name_f">
+                        {% for mn in meal_list %}
+                        <option value="{{mn}}">{{ mn }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <label for="number" class="col-sm-2 label-size col-form-label">
+                    Numer posiłku
+                </label>
+                <div class="col-sm-2">
+                    <input type="number" min="1"  class="form-control" name ="meal_number" value="1" id="number"
+                           placeholder="Numer posiłki" >
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="recipie" class="col-sm-2 label-size col-form-label">
+                    Przepis
+                </label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="recipe" id="recipie">
+                        {% for r in recipes %}
+                        <option value="{{ r.id }}">{{ r.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="day" class="col-sm-2 label-size col-form-label">
+                    Dzień
+                </label>
+                <div class="col-sm-2">
+                    <select class="form-control" name='day' id="day">
+                        {% for d in week_days %}
+                        <option value="{{ d.id }}">{{ d.dayname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        {% if my_plan_data %}
+            <table class="table">
+               {% for day,details in my_plan_data.items %}
+                    {% if details|length  != 0 %}
+                        <thead>
+                        <tr class="d-flex">
+                            <th class="col-2">{{ day }}</th>
+                            <th class="col-7"></th>
+                            <th class="col-1"></th>
+                            <th class="col-2"></th>
+                        </tr>
+                        </thead>
+
+                        <tbody class="text-color-lighter">
+                            {%  for meal in details %}
+                            <tr class="d-flex">
+                                <td class="col-2">{{ meal.name }}</td>
+                                <td class="col-7">{{ meal.description }}</td>
+                                <td class="col-1 center">
+                                    <a href="#" class="btn btn-danger rounded-0 text-light m-1">Usuń</a>
+                                </td>
+                                <td class="col-2 center">
+                                    <a href="/recipe/{{ meal.id }}"
+                                       class="btn btn-info rounded-0 text-light m-1">Szczegóły</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    {%  endif %}
+               {% endfor %}
+            </table>
+        {% endif %}
+        </div>
+     {% csrf_token %}
+    </form>
+</div>
+{% endblock content %}
