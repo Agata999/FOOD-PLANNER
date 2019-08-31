@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 
@@ -120,3 +121,5 @@ except ModuleNotFoundError:
     print("Brak konfiguracji bazy danych w pliku local_settings.py!")
     print("Uzupełnij dane i spróbuj ponownie!")
     exit(0)
+
+django_heroku.settings(locals())
