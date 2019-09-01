@@ -102,10 +102,9 @@ def recipe_details(request, r_id):
         return render(request, 'app-recipe-details.html', {'recipe': recipe, 'flag' : flag})
 
 
-def get(self, request):
+def get(request):
     ctx = {"actual_date": datetime.now()}
     return render(request, "test.html", ctx)
-
 
 
 def loading_page(request):
@@ -268,7 +267,6 @@ def edit_recipe(request, r_id):
 
 
 def plan_id(request, plan_number):
-    """8.2 5.2- do skonczenia przekierowanie"""
     my_plan = JedzonkoPlan.objects.get(id=int(plan_number))
     prep_data = my_plan_details(plan_number)
     return render(request, 'app-details-schedules.html', {'my_plan': my_plan,

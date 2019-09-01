@@ -5,7 +5,7 @@
 
     <div class="row border-bottom border-3 p-1 m-1">
         <div class="col noPadding d-flex mb-2"><a
-                href=""
+                href="/plan"
                 class="btn btn-success rounded-0 pt-2 pb-2 pr-4 pl-4">Strona główna</a></div>
         <div class="col noPadding"><h3 class="color-header text-uppercase">Lista
             Przepisów</h3></div>
@@ -25,7 +25,6 @@
     <table class="table border-bottom schedules-content">
         <thead>
         <tr class="d-flex text-color-darker">
-            <th scope="col" class="col-1">ID</th>
             <th scope="col" class="col-2">NAZWA</th>
             <th scope="col" class="col-3">OPIS</th>
             <th scope="col" class="col-4">Data utworzenia</th>
@@ -35,11 +34,10 @@
         <tbody class="text-color-lighter">
         {% for r in recipes %}
         <tr class="d-flex">
-            <th scope="row" class="col-1"> {{r.id }} </th>
-            <td class="col-2">
+            <th scope="row" class="col-2">
                 {{ r.name }} <br>
                 ({{ r.votes }} lajków)
-            </td>
+            </th>
             <td class="col-3"> {{ r.description }}
             </td>
             </td>

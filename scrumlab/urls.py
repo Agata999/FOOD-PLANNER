@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from jedzonko.views import add_recipe, recipe_list, recipe_details, delete_recipe, edit_recipe, plan_details_views
-from jedzonko.views import loading_page, contact_view, about_view
+from jedzonko.views import loading_page, contact_view, about_view, get
 from jedzonko.views import plan_add_view, plan_add_details, plan_list_page1, plan_list, plan_id
 
 
@@ -34,6 +34,7 @@ urlpatterns = [
     path('plan/add/', plan_add_view),
     path('plan/add/details/', plan_add_details),
     path('plan/list/', plan_list_page1),
+    path('test/', get),
     re_path('list/(?P<page_number>(\d){1,4})$', plan_list),
     re_path('plan/(?P<plan_number>(\d){1,4})$', plan_id)
 ]
