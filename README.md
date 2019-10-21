@@ -8,7 +8,7 @@
 * [Status](#status)
 
 ## General info
-Scrum project created with Django 
+Scrum project created with Django. My part of project: list of recipes, creating a possibility to add, edit, delete, find a recipe
 
 ## Technologies
 * Python - version 3.6
