@@ -1,5 +1,5 @@
 # Zaplanuj Jedzonko - Scrum
-> A web application to planning meals created with Django and Scrum methodology 
+> A web application to plan meals created with Django and Scrum methodology 
 
 ## Table of contents
 * [General info](#general-info)
