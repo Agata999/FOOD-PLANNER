@@ -17,13 +17,13 @@ Scrum project created with Django. My part of project: list of recipes, creating
 
 ## Setup
 * Clone git repository
-* Create virtualenv 'virtualenv -p python3 venv'
-* Activate virtualenv 'source venv/bin/activate'
-* Install requirements 'pip install -r requirements.txt'
-* Setup psql database called 'jedzonko_db'
+* Create virtualenv `virtualenv -p python3 venv`
+* Activate virtualenv `source venv/bin/activate`
+* Install requirements `pip install -r requirements.txt`
+* Setup psql database called `jedzonko_db`
 * Change psql user and password to yours
-* 'python manage.py migrate'
-* 'python manage.py runserver'
+* `python manage.py migrate`
+* `python manage.py runserver`
 
 ## Status
-Project is: _in progress_
+Project is: _finished_
